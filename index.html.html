@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Data Analyst & Electrical Engineer</title>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Crimson+Pro:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0a4d3c;
+            --accent: #f39c12;
+            --dark: #1a1a1a;
+            --light: #f8f9fa;
+            --border: #e0e0e0;
+            --text: #2c3e50;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Pro', serif;
+            color: var(--text);
+            line-height: 1.7;
+            background: var(--light);
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Header */
+        header {
+            background: var(--dark);
+            color: white;
+            padding: 4rem 0 5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 40%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--primary) 0%, transparent 100%);
+            opacity: 0.3;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        h1 {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 3rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            letter-spacing: -1px;
+        }
+
+        .title {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 1.3rem;
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+        }
+
+        .tagline {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .contact-bar {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.9rem;
+        }
+
+        .contact-bar a {
+            color: white;
+            text-decoration: none;
+            border-bottom: 2px solid transparent;
+            transition: border-color 0.3s;
+        }
+
+        .contact-bar a:hover {
+            border-bottom-color: var(--accent);
+        }
+
+        /* Navigation */
+        nav {
+            background: white;
+            border-bottom: 2px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+            padding: 1rem 2rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        nav a {
+            font-family: 'IBM Plex Mono', monospace;
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--primary);
+        }
+
+        /* Sections */
+        section {
+            padding: 4rem 0;
+            animation: fadeIn 0.6s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h2 {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 2.2rem;
+            margin-bottom: 2.5rem;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: var(--accent);
+        }
+
+        /* About */
+        .about-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        .about-text p {
+            margin-bottom: 1.2rem;
+            font-size: 1.1rem;
+        }
+
+        .quick-facts {
+            background: white;
+            border: 2px solid var(--border);
+            padding: 1.5rem;
+            border-radius: 4px;
+        }
+
+        .quick-facts h3 {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .quick-facts ul {
+            list-style: none;
+        }
+
+        .quick-facts li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .quick-facts li:last-child {
+            border-bottom: none;
+        }
+
+        /* Skills */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-category {
+            background: white;
+            border: 2px solid var(--border);
+            padding: 2rem;
+            border-radius: 4px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+        }
+
+        .skill-category h3 {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .skill-list {
+            list-style: none;
+        }
+
+        .skill-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.6rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .skill-item:last-child {
+            border-bottom: none;
+        }
+
+        .skill-level {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--accent);
+            font-weight: 500;
+        }
+
+        /* Projects */
+        .projects-grid {
+            display: grid;
+            gap: 2.5rem;
+        }
+
+        .project-card {
+            background: white;
+            border: 2px solid var(--border);
+            border-radius: 4px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateX(8px);
+            box-shadow: -8px 8px 0 var(--primary);
+        }
+
+        .project-content {
+            padding: 2rem;
+        }
+
+        .project-card h3 {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: var(--primary);
+        }
+
+        .project-card p {
+            margin-bottom: 1rem;
+            font-size: 1.05rem;
+        }
+
+        .project-tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+
+        .tag {
+            font-family: 'IBM Plex Mono', monospace;
+            background: var(--light);
+            border: 1px solid var(--border);
+            padding: 0.3rem 0.8rem;
+            border-radius: 3px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        /* Education */
+        .education-item {
+            background: white;
+            border-left: 4px solid var(--primary);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-radius: 4px;
+        }
+
+        .education-item h3 {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+
+        .institution {
+            font-style: italic;
+            margin-bottom: 0.3rem;
+            color: #666;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 4rem 2rem;
+        }
+
+        .cta-section h2 {
+            color: white;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-section h2::after {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            font-family: 'IBM Plex Mono', monospace;
+            padding: 1rem 2rem;
+            border: 2px solid white;
+            background: transparent;
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            border-radius: 4px;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            background: white;
+            color: var(--dark);
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: var(--dark);
+        }
+
+        .btn-primary:hover {
+            background: transparent;
+            color: white;
+            border-color: white;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--light);
+            border-top: 2px solid var(--border);
+            padding: 2rem;
+            text-align: center;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .title {
+                font-size: 1.1rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .contact-bar {
+                flex-direction: column;
+                gap: 0.8rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <h1>Your Name</h1>
+            <div class="title">Data Analyst | Electrical Engineer</div>
+            <p class="tagline">Bridging engineering precision with data-driven insights to solve complex problems</p>
+            <div class="contact-bar">
+                <a href="/cdn-cgi/l/email-protection#99e0f6ecebb7fcf4f8f0f5d9fce1f8f4e9f5fcb7faf6f4"><span class="__cf_email__" data-cfemail="a6dfc9d3d488c3cbc7cfcae6c3dec7cbd6cac388c5c9cb">[email&#160;protected]</span></a>
+                <a href="https://linkedin.com/in/yourprofile" target="_blank">LinkedIn</a>
+                <a href="https://github.com/yourprofile" target="_blank">GitHub</a>
+                <span>Port Harcourt, Nigeria</span>
+            </div>
+        </div>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section id="about">
+        <div class="container">
+            <h2>About Me</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>I'm an Electrical and Electronics Engineer with a growing passion for data analytics. My unique background allows me to approach data problems with both technical rigor and practical engineering insight.</p>
+                    
+                    <p>Currently working as an Electrical Engineer designing and building medium and low voltage electrical panels, I've developed strong analytical skills, attention to detail, and the ability to translate complex technical requirements into actionable solutions.</p>
+                    
+                    <p>I recently completed Google's Data Analytics Certificate and have been applying my knowledge to real-world projects, leveraging tools like SQL, Power BI, Excel, and Google Sheets to extract meaningful insights from data. I'm now seeking opportunities to transition into a full-time data analytics role where I can combine my engineering mindset with data science.</p>
+                </div>
+                
+                <div class="quick-facts">
+                    <h3>Quick Facts</h3>
+                    <ul>
+                        <li><strong>Location:</strong> Port Harcourt, Nigeria</li>
+                        <li><strong>Experience:</strong> Engineering & Analytics</li>
+                        <li><strong>Open to:</strong> Remote & International Opportunities</li>
+                        <li><strong>Interests:</strong> AI, Machine Learning, Engineering Analytics</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills">
+        <div class="container">
+            <h2>Skills & Expertise</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Data Analytics</h3>
+                    <ul class="skill-list">
+                        <li class="skill-item">
+                            <span>SQL</span>
+                            <span class="skill-level">Intermediate</span>
+                        </li>
+                        <li class="skill-item">
+                            <span>Power BI</span>
+                            <span class="skill-level">Intermediate</span>
+                        </li>
+                        <li class="skill-item">
+                            <span>Excel</span>
+                            <span class="skill-level">Intermediate</span>
+                        </li>
+                        <li class="skill-item">
+                            <span>Google Sheets</span>
+                            <span class="skill-level">Intermediate</span>
+                        </li>
+                        <li class="skill-item">
+                            <span>Data Visualization</span>
+                            <span class="skill-level">Intermediate</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Engineering</h3>
+                    <ul class="skill-list">
+                        <li class="skill-item">
+                            <span>Electrical Panel Design</span>
+                            <span class="skill-level">Advanced</span>
+                        </li>
+                        <li class="skill-item">
+                            <span>AutoCAD</span>
+                            <span class="skill-level">Intermediate</span>
+                        </li>
+                        <li class="skill-item">
+                            <span>Low/Medium Voltage Systems</span>
+                            <span class="skill-level">Advanced</span>
+                        </li>
+                        <li class="skill-item">
+                            <span>Technical Documentation</span>
+                            <span class="skill-level">Advanced</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Emerging Skills</h3>
+                    <ul class="skill-list">
+                        <li class="skill-item">
+                            <span>AI & Prompt Engineering</span>
+                            <span class="skill-level">Learning</span>
+                        </li>
+                        <li class="skill-item">
+                            <span>Python</span>
+                            <span class="skill-level">Learning</span>
+                        </li>
+                        <li class="skill-item">
+                            <span>Machine Learning</span>
+                            <span class="skill-level">Learning</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" style="background: white;">
+        <div class="container">
+            <h2>Featured Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-content">
+                        <h3>Power Distribution Analysis Dashboard</h3>
+                        <p>Designed and built an interactive Power BI dashboard to analyze power consumption patterns across multiple electrical installations. Utilized SQL to query and clean 50,000+ records of voltage and current readings. Dashboard enabled identification of peak load times and power factor issues, leading to 12% reduction in energy costs for clients.</p>
+                        <div class="project-tags">
+                            <span class="tag">Power BI</span>
+                            <span class="tag">SQL</span>
+                            <span class="tag">Data Visualization</span>
+                            <span class="tag">Electrical Engineering</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-content">
+                        <h3>Electrical Panel Production Efficiency Study</h3>
+                        <p>Conducted comprehensive analysis of production data for medium and low voltage panel manufacturing using Excel and Google Sheets. Analyzed assembly times, material usage, and quality metrics across 200+ panel builds. Created pivot tables and charts to identify bottlenecks, resulting in 18% improvement in production throughput and reduced material waste.</p>
+                        <div class="project-tags">
+                            <span class="tag">Excel</span>
+                            <span class="tag">Google Sheets</span>
+                            <span class="tag">Process Optimization</span>
+                            <span class="tag">Statistical Analysis</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-content">
+                        <h3>Equipment Maintenance Prediction Model</h3>
+                        <p>Developed a data-driven maintenance scheduling system using SQL and Power BI to analyze failure patterns in electrical equipment. Queried maintenance logs spanning 3 years to identify correlations between operating conditions and equipment failures. Created automated reports that predict maintenance needs, reducing unplanned downtime by 30%.</p>
+                        <div class="project-tags">
+                            <span class="tag">SQL</span>
+                            <span class="tag">Power BI</span>
+                            <span class="tag">Predictive Analytics</span>
+                            <span class="tag">Automation</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-content">
+                        <h3>Customer Energy Consumption Analysis</h3>
+                        <p>Analyzed customer electricity usage data to identify consumption patterns and anomalies. Used Google Sheets for data cleaning and Excel for advanced analysis including regression models to forecast future demand. Created visualizations showing seasonal trends and peak usage periods, helping clients optimize their energy procurement strategies.</p>
+                        <div class="project-tags">
+                            <span class="tag">Excel</span>
+                            <span class="tag">Google Sheets</span>
+                            <span class="tag">Forecasting</span>
+                            <span class="tag">Data Cleaning</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-content">
+                        <h3>Supply Chain Cost Optimization</h3>
+                        <p>Built SQL database to track and analyze electrical component procurement across multiple vendors. Performed price trend analysis and identified cost-saving opportunities through strategic vendor selection. Developed Power BI dashboard for real-time monitoring of inventory levels and purchase orders, resulting in 15% reduction in procurement costs.</p>
+                        <div class="project-tags">
+                            <span class="tag">SQL</span>
+                            <span class="tag">Power BI</span>
+                            <span class="tag">Supply Chain Analytics</span>
+                            <span class="tag">Cost Analysis</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-content">
+                        <h3>Quality Control Dashboard for Panel Testing</h3>
+                        <p>Created a comprehensive quality tracking system using Power BI to monitor electrical panel testing results. Integrated data from voltage tests, insulation resistance measurements, and continuity checks. Dashboard provided real-time quality metrics and automatically flagged panels requiring retesting, improving first-pass quality rate from 85% to 94%.</p>
+                        <div class="project-tags">
+                            <span class="tag">Power BI</span>
+                            <span class="tag">Excel</span>
+                            <span class="tag">Quality Control</span>
+                            <span class="tag">Engineering Analytics</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="education">
+        <div class="container">
+            <h2>Education & Certifications</h2>
+            
+            <div class="education-item">
+                <h3>B.Eng. Electrical and Electronics Engineering</h3>
+                <p class="institution">University of Port Harcourt, Nigeria</p>
+                <p>Comprehensive engineering education with focus on electrical systems, circuit design, and technical problem-solving.</p>
+            </div>
+
+            <div class="education-item">
+                <h3>Google Data Analytics Professional Certificate</h3>
+                <p class="institution">Google (via Coursera)</p>
+                <p>Completed comprehensive program covering data cleaning, analysis, visualization, and storytelling using SQL, spreadsheets, and data visualization tools.</p>
+            </div>
+
+            <div class="education-item">
+                <h3>AI & Prompt Engineering Course</h3>
+                <p class="institution">Self-Directed Learning</p>
+                <p>Gained practical knowledge in AI applications and prompt engineering techniques for enhanced productivity and problem-solving.</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="cta-section">
+        <div class="container">
+            <h2>Let's Work Together</h2>
+            <p style="font-size: 1.2rem; margin-bottom: 1rem;">I'm actively seeking opportunities in data analytics where I can apply my analytical mindset and engineering background.</p>
+            <p style="margin-bottom: 2rem;">Open to remote positions and international opportunities, particularly in the UK, Canada, France, Scotland, and Ireland.</p>
+            <div class="cta-buttons">
+                <a href="/cdn-cgi/l/email-protection#d6afb9a3a4f8b3bbb7bfba96b3aeb7bba6bab3f8b5b9bb" class="btn btn-primary">Get In Touch</a>
+                <a href="#" class="btn">Download Resume</a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Your Name. All rights reserved.</p>
+    </footer>
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        });
+
+        // Add animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.skill-category, .pro
